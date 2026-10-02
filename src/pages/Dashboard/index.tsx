@@ -11,7 +11,7 @@ import Tabela from "../../components/Tabela";
 import Titulo from "../../components/Titulo";
 import useDadosConsulta from "../../useDadosConsulta";
 import useDadosProfissional from "../../useDadosProfissional";
-import { consultasDoDia } from "../../utils/datasDasConsultas";
+import { consultasDoDia, consultasDoMes, nomeDoMes } from "../../utils/datasDasConsultas";
 import ModalCadastro from "./Modal";
 
 export default function Dashboard() {
@@ -43,8 +43,8 @@ export default function Dashboard() {
       <Titulo imagem="consulta">Consultas do Dia</Titulo>
       <Tabela consultas={consultas && consultasDoDia(consultas)} />
       <Titulo imagem="grafico">Consultas mensais por especialista</Titulo>
-      <Subtitulo>Dezembro/22</Subtitulo>
-      <Grafico consultas={consultas} profissionais={profissionais} />
+      <Subtitulo>{nomeDoMes()}</Subtitulo>
+      <Grafico consultas={consultas && consultasDoMes(consultas)} profissionais={profissionais} />
       <Titulo imagem="avaliacao">Avaliações de especialistas</Titulo>
       <Avaliacao profissionais={profissionais} />
     </Container>
