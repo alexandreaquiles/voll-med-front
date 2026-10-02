@@ -47,7 +47,7 @@ grid-template-columns: 2fr 1fr;
 grid-gap: 0 1em;
 `
 
-export default function ModalCadastro({ open, handleClose }: { open: boolean, handleClose: () => void }) {
+export default function ModalCadastro({ open, handleClose, aoCadastrar }: { open: boolean, handleClose: () => void, aoCadastrar?: () => void }) {
     const [planosSelecionados, setPlanosSelecionados] = useState<string[]>([]);
     const [nome, setNome] = useState("");
     const [email, setEmail] = useState("");
@@ -98,7 +98,10 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
             }
         }
 
-        await cadastrarDados({url: "especialista", dados: profissional})
+        if (await cadastrarDados({url: "especialista", dados: profissional})) {
+            aoCadastrar?.();
+            handleClose();
+        }
     }
 
     return (

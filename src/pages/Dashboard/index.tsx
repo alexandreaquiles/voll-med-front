@@ -16,7 +16,7 @@ import ModalCadastro from "./Modal";
 
 export default function Dashboard() {
   const { dados: consultas, erro: consultasErro } = useDadosConsulta();
-  const { dados: profissionais, erro: profissionaisErro } = useDadosProfissional();
+  const { dados: profissionais, erro: profissionaisErro, recarrega: recarregaProfissionais } = useDadosProfissional();
 
   if (consultasErro || profissionaisErro) {
     console.log("Ocorreu um erro na requisição")
@@ -37,7 +37,7 @@ export default function Dashboard() {
     <Container>
       <Titulo>Área Administrativa</Titulo>
       <Botao onClick={() => handleOpen()}>Cadastrar especialista</Botao>
-      <ModalCadastro open={open} handleClose={handleClose} />
+      <ModalCadastro open={open} handleClose={handleClose} aoCadastrar={recarregaProfissionais} />
       <Titulo imagem="grafico">Resumo de Gestão Inteligente</Titulo>
       <ResumoDeGestao />
       <Titulo imagem="consulta">Consultas do Dia</Titulo>

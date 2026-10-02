@@ -6,8 +6,9 @@ export default function usePost() {
     const [sucesso, setSucesso] = useState(false);
     const [resposta, setResposta] = useState('');
 
+    // Devolve se a API aceitou os dados
     async function cadastrarDados<T>({url, dados} : 
-        {url: string, dados: T}) {
+        {url: string, dados: T}): Promise<boolean> {
 
             try {
             const resposta = await requisicao(url, {
@@ -18,6 +19,10 @@ export default function usePost() {
             
            
          const respostaConvertida = await resposta.json();
+         if (!resposta.ok) {
+             setErro(respostaConvertida.message ?? 'Não foi possível enviar os dados');
+             return false;
+         }
          // Só o login devolve tokens: os demais POSTs não podem sobrescrever os tokens salvos
          if (respostaConvertida.accessToken) {
              setResposta(respostaConvertida.accessToken);
@@ -25,8 +30,10 @@ export default function usePost() {
          }
 
             setSucesso(true);
+            return true;
         } catch (erro) {
         setErro('Não foi possível enviar os dados');
+        return false;
     }
 }
 
