@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { API_URL } from "./api";
 
 export default function useFetch<T>({ url }: { url: string }) {
     const [dados, setDados] = useState<T | null>(null);
@@ -6,7 +7,7 @@ export default function useFetch<T>({ url }: { url: string }) {
   
 
     useEffect(() => {
-     fetch(`https://volserver.onrender.com/${url}`)
+     fetch(`${API_URL}/${url}`)
         .then(
             resposta => resposta.json()
         ).then(dados => setDados(dados)).catch((erro => setErro(erro)))

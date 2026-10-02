@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API_URL } from './api';
 
 export default function usePost() {
     const [erro, setErro] = useState('');
@@ -16,7 +17,7 @@ export default function usePost() {
             }
 
             try {
-            const resposta = await fetch(`https://volserver.onrender.com/${url}`, {
+            const resposta = await fetch(`${API_URL}/${url}`, {
                 method: 'POST',
                 headers,
                 body: JSON.stringify(dados)
