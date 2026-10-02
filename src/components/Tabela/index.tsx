@@ -28,6 +28,9 @@ const LinhaEstilizada = styled(TableRow)(() => ({
     }
 }))
 
+// A voll-med-api trata os horários das consultas em UTC (horário de funcionamento da clínica)
+const formatoDaData: Intl.DateTimeFormatOptions = { timeZone: 'UTC' };
+const formatoDoHorario: Intl.DateTimeFormatOptions = { timeZone: 'UTC', hour: '2-digit', minute: '2-digit' };
 
 function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
     return (
@@ -41,19 +44,17 @@ function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
                             <CelulaEstilizada>Profissional</CelulaEstilizada>
                             <CelulaEstilizada>Especialidade</CelulaEstilizada>
                             <CelulaEstilizada>Paciente</CelulaEstilizada>
-                            <CelulaEstilizada>Modalidade</CelulaEstilizada>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {consultas?.map((linha) => {
                             return (
-                                <LinhaEstilizada>
-                                    <CelulaEstilizada component="th" scope="row">{new Date(linha.data).toLocaleDateString()}</CelulaEstilizada>
-                                    <CelulaEstilizada>{linha.horario}</CelulaEstilizada>
-                                    <CelulaEstilizada>{linha.profissional[0].nome}</CelulaEstilizada>
-                                    <CelulaEstilizada>{linha.profissional[0].especialidade}</CelulaEstilizada>
-                                    <CelulaEstilizada>{linha.paciente}</CelulaEstilizada>
-                                    <CelulaEstilizada>{linha.modalidade}</CelulaEstilizada>
+                                <LinhaEstilizada key={linha.id}>
+                                    <CelulaEstilizada component="th" scope="row">{new Date(linha.data).toLocaleDateString('pt-BR', formatoDaData)}</CelulaEstilizada>
+                                    <CelulaEstilizada>{new Date(linha.data).toLocaleTimeString('pt-BR', formatoDoHorario)}</CelulaEstilizada>
+                                    <CelulaEstilizada>{linha.especialista?.nome}</CelulaEstilizada>
+                                    <CelulaEstilizada>{linha.especialista?.especialidade}</CelulaEstilizada>
+                                    <CelulaEstilizada>{linha.paciente?.nome}</CelulaEstilizada>
                                 </LinhaEstilizada>
                             )
                         })}

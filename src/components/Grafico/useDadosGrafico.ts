@@ -17,9 +17,7 @@ const useDadosGrafico = ({ profissionais, consultas }: Props) => {
     if (profissionais && profissionais.length && consultas) {
         dados = profissionais.map((profissional) => ({
             nome: profissional.nome,
-            consultas: consultas.filter((consulta) =>
-                consulta.profissional.some((prof) => prof.nome === profissional.nome)
-            ).length
+            consultas: consultas.filter((consulta) => consulta.especialista?.id === profissional.id).length
         }))
     }
 

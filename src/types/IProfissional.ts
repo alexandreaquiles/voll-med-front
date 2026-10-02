@@ -1,6 +1,7 @@
 import IEndereco from "./IEndereco";
 
 export default interface IProfissional {
+    id?: string,
     nome: string,
     crm: string,
     imagem: string,

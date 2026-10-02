@@ -1,11 +1,14 @@
-import IProfissional from "./IProfissional";
-
-export default interface IConsulta extends IProfissional {
-    id: number,
+// Formato devolvido pela voll-med-api em GET /consulta (sem dados sensíveis do paciente)
+export default interface IConsulta {
+    id: string,
     data: string,
-    horario: string,
-    profissional: Array<IProfissional>,
-    especialidade: string,
-    paciente: string,
-    modalidade: string
+    paciente: {
+        id: string,
+        nome: string
+    },
+    especialista: {
+        id: string,
+        nome: string,
+        especialidade: string
+    }
 }
