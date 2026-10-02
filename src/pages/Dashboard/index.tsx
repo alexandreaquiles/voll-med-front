@@ -4,6 +4,7 @@ import Botao from "../../components/Botao";
 import Cabecalho from "../../components/Cabecalho";
 import Container from "../../components/Container";
 import Grafico from "../../components/Grafico";
+import ResumoDeGestao from "../../components/ResumoDeGestao";
 import Rodape from "../../components/Rodape";
 import Subtitulo from "../../components/Subtitulo";
 import Tabela from "../../components/Tabela";
@@ -36,6 +37,8 @@ export default function Dashboard() {
       <Titulo>Área Administrativa</Titulo>
       <Botao onClick={() => handleOpen()}>Cadastrar especialista</Botao>
       <ModalCadastro open={open} handleClose={handleClose} />
+      <Titulo imagem="grafico">Resumo de Gestão Inteligente</Titulo>
+      <ResumoDeGestao />
       <Titulo imagem="consulta">Consultas do Dia</Titulo>
       <Tabela consultas={consultas} />
       <Titulo imagem="grafico">Consultas mensais por especialista</Titulo>
