@@ -25,9 +25,11 @@ export default function usePost() {
             
            
          const respostaConvertida = await resposta.json();
-         setResposta(respostaConvertida.token);
-
-         localStorage.setItem('token', respostaConvertida.token);
+         // Só o login devolve token: os demais POSTs não podem sobrescrever o token salvo
+         if (respostaConvertida.accessToken) {
+             setResposta(respostaConvertida.accessToken);
+             localStorage.setItem('token', respostaConvertida.accessToken);
+         }
 
             setSucesso(true);
         } catch (erro) {
