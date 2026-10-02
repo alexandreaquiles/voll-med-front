@@ -11,6 +11,7 @@ import Tabela from "../../components/Tabela";
 import Titulo from "../../components/Titulo";
 import useDadosConsulta from "../../useDadosConsulta";
 import useDadosProfissional from "../../useDadosProfissional";
+import { consultasDoDia } from "../../utils/datasDasConsultas";
 import ModalCadastro from "./Modal";
 
 export default function Dashboard() {
@@ -40,7 +41,7 @@ export default function Dashboard() {
       <Titulo imagem="grafico">Resumo de Gestão Inteligente</Titulo>
       <ResumoDeGestao />
       <Titulo imagem="consulta">Consultas do Dia</Titulo>
-      <Tabela consultas={consultas} />
+      <Tabela consultas={consultas && consultasDoDia(consultas)} />
       <Titulo imagem="grafico">Consultas mensais por especialista</Titulo>
       <Subtitulo>Dezembro/22</Subtitulo>
       <Grafico consultas={consultas} profissionais={profissionais} />

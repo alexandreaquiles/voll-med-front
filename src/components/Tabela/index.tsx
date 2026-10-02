@@ -47,6 +47,11 @@ function Tabela({ consultas }: { consultas: IConsulta[] | null }) {
                         </TableRow>
                     </TableHead>
                     <TableBody>
+                        {consultas?.length === 0 && (
+                            <TableRow>
+                                <CelulaEstilizada colSpan={5}>Nenhuma consulta para hoje.</CelulaEstilizada>
+                            </TableRow>
+                        )}
                         {consultas?.map((linha) => {
                             return (
                                 <LinhaEstilizada key={linha.id}>
