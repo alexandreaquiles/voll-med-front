@@ -10,6 +10,7 @@ export default function usePost() {
     async function cadastrarDados<T>({url, dados} : 
         {url: string, dados: T}): Promise<boolean> {
 
+            setErro('');
             try {
             const resposta = await requisicao(url, {
                 method: 'POST',

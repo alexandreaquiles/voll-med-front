@@ -42,6 +42,12 @@ const Formulario = styled.form`
   align-items: center;
 `;
 
+const MensagemDeErro = styled.p`
+    color: #C62828;
+    font-weight: 700;
+    text-align: center;
+`
+
 const BotaoCustomizado = styled(Botao)`
   width: 70%;
 `;
@@ -94,6 +100,7 @@ export default function Login() {
             dataTest="inputLoginSenha"/>
             <BotaoCustomizado type="submit" form="formulario" data-test="botaoTeste">Entrar</BotaoCustomizado>
         </Formulario>
+        {erro && <MensagemDeErro role="alert">{erro}</MensagemDeErro>}
         
         <Paragrafo>Esqueceu sua senha?</Paragrafo>
         <ParagrafoCadastro>Ainda não tem conta? <LinkCustomizado to="/cadastro">Faça seu cadastro!</LinkCustomizado></ParagrafoCadastro>
