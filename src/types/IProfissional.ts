@@ -8,7 +8,7 @@ export default interface IProfissional {
     especialidade: string,
     possuiPlanoSaude: boolean,
     senha: string,
-    planoSaude: string[],
+    planosSaude: string[],
     estaAtivo: boolean,
     email: string,
     telefone: string,

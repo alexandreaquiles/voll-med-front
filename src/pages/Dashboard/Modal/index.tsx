@@ -86,7 +86,7 @@ export default function ModalCadastro({ open, handleClose, aoCadastrar }: { open
             estaAtivo: true,
             imagem: imagem,
             senha: senha,
-            planoSaude: planosSelecionados,
+            planosSaude: planosSelecionados,
             email: email,
             telefone: telefone,
             endereco: {
@@ -187,12 +187,13 @@ export default function ModalCadastro({ open, handleClose, aoCadastrar }: { open
                         {possuiPlano ?
                             <>
                                 <Subtitulo>Selecione os planos:</Subtitulo>
+                                {/* Os valores são os nomes do enum PlanosSaude da voll-med-api (sem acento) */}
                                 <FormGroup>
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Sulamerica" />} label="Sulamerica" />
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Unimed" />} label="Unimed" />
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Bradesco" />} label="Bradesco" />
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Amil" />} label="Amil" />
-                                    <FormControlLabel control={<Checkbox onChange={handleChange} value="Biosaúde" />} label="Biosaúde" />
+                                    <FormControlLabel control={<Checkbox onChange={handleChange} value="Biosaude" />} label="Biosaúde" />
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Biovida" />} label="Biovida" />
                                     <FormControlLabel control={<Checkbox onChange={handleChange} value="Outro" />} label="Outro" />
                                 </FormGroup>
