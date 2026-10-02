@@ -17,7 +17,7 @@ function Avaliacao({ profissionais }: { profissionais: IProfissional[] | null })
                 {profissionais && profissionais.length 
                 ? 
                 profissionais?.map((profissional) => {
-                  return <Card profissional={profissional} />
+                  return <Card key={profissional.id} profissional={profissional} />
                 } )
                 : 
                 "Não há avaliações para mostrar"}
