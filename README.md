@@ -23,7 +23,7 @@ As técnicas e tecnologias que serão utilizadas neste projeto são:
 
 ## Rodando localmente
 
-O front consome a [voll-med-api](https://github.com/alexandreaquiles/voll-med-api). Siga primeiro o passo a passo do README da API, que mostra como configurar o `.env`, subir o Redis, popular o banco com dados de exemplo e subir a API em http://localhost:3000.
+O front consome a [voll-med-api](https://github.com/alexandreaquiles/voll-med-api). Siga primeiro o passo a passo do README da API, que mostra como configurar o `.env`, subir o MySQL e o Redis com Docker Compose, popular o banco com dados de exemplo e subir a API em http://localhost:3000.
 
 Depois, neste repositório:
 
