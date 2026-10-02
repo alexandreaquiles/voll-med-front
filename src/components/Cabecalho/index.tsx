@@ -3,6 +3,7 @@ import logo from './assets/logo.png';
 import perfil from './assets/perfil.png';
 import pesquisa from './assets/search.png';
 import autenticaStore from '../../stores/autentica.store';
+import { encerraSessao } from '../../sessao';
 
 
 const CabecalhoEstilizado = styled.header`
@@ -63,8 +64,12 @@ text-decoration: none;
 
 
 function Cabecalho() {
-    const handleLogout = () => {
+    // Espera a API invalidar os tokens antes de sair da página, que cancelaria a requisição
+    const handleLogout = async (evento: React.MouseEvent<HTMLAnchorElement>) => {
+        evento.preventDefault();
+        await encerraSessao();
         autenticaStore.logout();
+        window.location.assign('/');
     };
 
     return (

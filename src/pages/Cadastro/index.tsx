@@ -62,7 +62,7 @@ export default function Cadastro() {
     const [numero, setNumero] = useState('');
     const [estado, setEstado] = useState('');
     const [complemento, setComplemento] = useState('');
-    const {cadastrarDados, erro, sucesso, resposta} = usePost();
+    const {cadastrarDados} = usePost();
     const navigate = useNavigate();
 
     const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
@@ -84,7 +84,7 @@ export default function Cadastro() {
 
         if (etapaAtiva !== 0) {
             try {
-                cadastrarDados({url: 'clinica', dados: clinica, token:resposta});
+                cadastrarDados({url: 'clinica', dados: clinica});
                 navigate('/login');
             } catch (erro) {
                 erro && alert('Erro ao cadastrar os dados')

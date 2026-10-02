@@ -8,7 +8,6 @@ import Botao from "../../../components/Botao";
 import Subtitulo from "../../../components/Subtitulo";
 import IProfissional from "../../../types/IProfissional";
 import usePost from "../../../usePost";
-import autenticaStore from "../../../stores/autentica.store";
 
 const BoxCustomizado = styled(Box)`
   position: fixed;
@@ -66,7 +65,6 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
     const [telefone, setTelefone] = useState("");
     const label = { inputProps: { 'aria-label': 'Atende por plano?' } };
     const {cadastrarDados} = usePost();
-    const {usuario} = autenticaStore;
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const checkboxValue = event.target.value;
@@ -100,7 +98,7 @@ export default function ModalCadastro({ open, handleClose }: { open: boolean, ha
             }
         }
 
-        await cadastrarDados({url: "especialista", dados: profissional, token: usuario.token})
+        await cadastrarDados({url: "especialista", dados: profissional})
     }
 
     return (
