@@ -77,8 +77,7 @@ export default function Login() {
       
       if (resposta || loggedUser) {
         autenticaStore.login({ email: email, token: resposta });
-        console.log(resposta);
-        
+
         navigate("/dashboard");
       }
     }, [email, navigate, resposta]);
